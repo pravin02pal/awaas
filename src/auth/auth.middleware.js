@@ -9,7 +9,7 @@ export const authMiddleware = store => next => action => {
   }
 
   function signInUser(user, action) {
-    if (user && user.password === "password") {
+    if (user && user.password === action.payload.password) {
       return {type: authConstants.SIGN_IN_SUCCESSFULL, payload: action.payload};
     } else {
       return {type: authConstants.INVALID_USER, payload: action.payload};
