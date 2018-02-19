@@ -1,0 +1,4 @@
+export const authConstants = {
+  SIGN_IN: 'AUTH.SIGN_IN',
+  SIGN_IN_SUCCESSFULL: 'AUTH.SIGN_IN_SUCCESSFULL'
+}
