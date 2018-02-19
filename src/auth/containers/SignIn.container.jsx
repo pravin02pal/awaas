@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
+import { authActions } from '../actions/auth.actions'
 import {SignInForm} from '../../auth/components/SignInForm.component'
 import { connect } from 'react-redux'
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.updateSate = this.updateSate.bind(this);
   }
 
-  handleClick() {
-
+  handleSubmit() {
+    this.props.dispatch(authActions.signIn(this.state));
   };
 
   updateSate(event) {
@@ -18,18 +19,24 @@ class SignIn extends Component {
   }
 
   render() {
-    return (
-      <SignInForm
-        onChange={(data) => this.updateSate(data)}
-        onSubmit={this.handleClick}
-      />
-    )
+    if (this.props.isLoggedIn) {
+      return (
+        <h1>Welcome Test</h1>
+      )
+    } else {
+      return (
+        <SignInForm
+          onChange={(data) => this.updateSate(data)}
+          onSubmit={this.handleSubmit}
+        />
+      )
+    }
   };
 }
 
 const mapStateToProps = state => {
   return {
-
+    isLoggedIn: state.authReducer.isLoggedIn
   }
 }
 
