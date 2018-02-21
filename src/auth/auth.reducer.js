@@ -1,8 +1,9 @@
 import { authConstants } from './actions/auth.constants';
 
 const DEFAULT_STATE = {
-  user: {email: 'test@dispatchbot.com', password: 'password'},
-  isLoggedIn: false
+  user: { email: 'test@dispatchbot.com', password: 'password' },
+  isLoggedIn: false,
+  invalidUser: true
 }
 
 export const authReducer = (state = DEFAULT_STATE, action) => {
@@ -11,7 +12,14 @@ export const authReducer = (state = DEFAULT_STATE, action) => {
       return {
         ...state,
         user: action.payload,
-        isLoggedIn: true
+        isLoggedIn: true,
+        invalidUser: false
+      };
+    case authConstants.SIGN_OUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+        invalidUser: false
       };
     default:
       return state;
