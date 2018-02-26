@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import SignIn from '../../auth/containers/SignIn.container'
 
 class Home extends Component {
   render() {
     return (
-     <SignIn />
+      <div>
+        <h1>Welcome Awaas</h1>
+      </div>
     )
   }
 }
 
-export default Home
+export default Home;

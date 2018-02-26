@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from './home/components/Home.component';
-import SignIn from './auth/containers/SignIn.container';
+import Auth from './auth/containers/Auth.container.jsx';
+import Header from './comman/containers/Header.container';
 
 class App extends Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/signin" component={SignIn} />
-        </Switch>
+        <div>
+          <header>
+            <Header />
+          </header>
+          <main>
+            <Route exact path="/" component={Home} />
+            <Route path="/signin" component={Auth} />
+            <Route path="/signout" component={Auth} />
+          </main>
+        </div>
       </Router>
     );
   }
